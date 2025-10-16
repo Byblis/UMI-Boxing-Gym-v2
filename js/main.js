@@ -12,6 +12,7 @@ window.addEventListener('load', () => {
   },5000); // ← 秒数はここで調整（3000 = 3秒）
 });
 
+// ハンバーガー開閉
 const menuBtn = document.querySelector('.menu-btn');
 const nav = document.querySelector('nav');
 
@@ -20,8 +21,18 @@ if (menuBtn && nav) {
     nav.classList.toggle('active');
   });
 }
-// ページ読み込み時にメニューを閉じておく（スマホ対策）
-window.addEventListener('pageshow', () => {
+
+// ===== どんな状況でも必ず閉じる！ =====
+function closeMenu() {
   const nav = document.querySelector('nav');
-  if (nav) nav.classList.remove('active');
-});
+  if (nav && nav.classList.contains('active')) {
+    nav.classList.remove('active');
+  }
+}
+
+// ページがロードされたとき
+window.addEventListener('load', closeMenu);
+// ページキャッシュから戻ったとき（スマホSafari対策）
+window.addEventListener('pageshow', closeMenu);
+// DOMが構築されたとき（念押し）
+document.addEventListener('DOMContentLoaded', closeMenu);
