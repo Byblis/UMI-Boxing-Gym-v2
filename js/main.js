@@ -19,3 +19,4 @@ if (menuBtn && nav) {
   menuBtn.addEventListener('click', () => {
     nav.classList.toggle('active');
   });
+}
