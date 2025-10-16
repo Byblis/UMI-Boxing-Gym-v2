@@ -14,29 +14,53 @@
     height: auto;
   }
 }
-/* ==============================
-   レスポンシブ（スマホ対応）
-============================== */
+
+/* 三本線ボタンはデフォルト非表示 */
+.menu-btn {
+  display: none;
+}
+
+/* ---------- スマホ用 ---------- */
 @media screen and (max-width: 768px) {
-  /* ▼ ヘッダー・ナビ ▼ */
-  header {
-    padding: 0.5em 0;
+  /* 三本線を出す */
+  .menu-btn {
+    display: block;
+  }
+
+  /* ナビを隠す（ボタン押すまで） */
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 開いたときに表示 */
+  nav.active ul {
+    display: flex;
+  }
+
+  /* 各リンクの見た目 */
+  nav ul li {
+    text-align: center;
+    padding: 1em 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+}
+
+/* ---------- PC用 ---------- */
+@media screen and (min-width: 769px) {
+  /* PCでは三本線消して、ナビ横並び */
+  .menu-btn {
+    display: none;
   }
 
   nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.6em;
+    display: flex;
+    justify-content: center;
   }
-
-  nav ul li {
-    margin: 0;
-  }
-
-  nav ul li a {
-    font-size: 1.1rem;
-    padding: 0.6em 1em;
-  }
+}
 
   /* ▼ トップ（hero） ▼ */
   .hero {
@@ -103,7 +127,6 @@
   .qr-area img.qr {
     width: 180px;
   }
-}
 
 /* カラーテーマ */
 :root {
@@ -347,35 +370,6 @@ nav ul li a:hover {
   color: #ccc;
 }
 /* ===== ACCESSページ ===== */
-.access-box {
-  text-align: center;
-  margin-top: 120px;
-  color: #fff;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-.access-box h2 {
-  color: #e63946;
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 1.5em;
-}
-
-/* 住所部分 */
-.address p {
-  font-size: 1.1rem;
-  margin: 0.3em 0;
-  line-height: 1.6;
-}
-
-/* マップ枠 */
-.map-wrap {
-  margin: 2em auto;
-  max-width: 600px;
-  border: 2px solid #e63946;
-  border-radius: 8px;
-  overflow: hidden;
-}
 
 /* 補足情報 */
 .access-info p {

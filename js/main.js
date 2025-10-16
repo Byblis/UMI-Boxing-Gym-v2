@@ -6,8 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // index.html から home.html に数秒後に移動する
 window.addEventListener('load', () => {
-  // イントロを3秒表示してからHOMEへ
+  // イントロを5秒表示してからHOMEへ
   setTimeout(() => {
     window.location.href = "home.html";
   },5000); // ← 秒数はここで調整（3000 = 3秒）
+});
+
+const menuBtn = document.querySelector('.menu-btn');
+const nav = document.querySelector('nav');
+
+menuBtn.addEventListener('click', () => {
+  nav.classList.toggle('active');
 });
