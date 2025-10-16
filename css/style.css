@@ -5,6 +5,105 @@
   font-weight: 400;
   font-style: normal;
 }
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+/* ==============================
+   レスポンシブ（スマホ対応）
+============================== */
+@media screen and (max-width: 768px) {
+  /* ▼ ヘッダー・ナビ ▼ */
+  header {
+    padding: 0.5em 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6em;
+  }
+
+  nav ul li {
+    margin: 0;
+  }
+
+  nav ul li a {
+    font-size: 1.1rem;
+    padding: 0.6em 1em;
+  }
+
+  /* ▼ トップ（hero） ▼ */
+  .hero {
+    height: auto;
+    margin-top: 80px;
+  }
+
+  .hero img {
+    height: auto;
+  }
+
+  .hero-text {
+    position: static;
+    transform: none;
+    padding: 1.5em 1em;
+    background: rgba(0,0,0,0.6);
+    border-radius: 10px;
+    margin: 1.5em auto;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+    white-space: normal;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    white-space: normal;
+  }
+
+  /* ▼ 共通セクション（hours, fee, access, contact） ▼ */
+  .hours,
+  .fee-box,
+  .access-box,
+  .contact {
+    margin-top: 80px;
+    padding: 1.5em 1em;
+  }
+
+  .hours h2,
+  .fee-box h2,
+  .access-box h2,
+  .contact h2 {
+    font-size: 1.6rem;
+  }
+
+  /* ▼ 文字サイズ調整 ▼ */
+  p, li {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* ▼ マップ ▼ */
+  .map-wrap {
+    max-width: 100%;
+    height: auto;
+  }
+
+  iframe {
+    height: 300px;
+  }
+
+  /* ▼ QRコード ▼ */
+  .qr-area img.qr {
+    width: 180px;
+  }
+}
 
 /* カラーテーマ */
 :root {
@@ -19,6 +118,7 @@ body {
   font-family: 'Roboto', 'Noto Sans JP', sans-serif;
   color: var(--fg);
   background: var(--bg);
+  padding-bottom: 80px; /* ← ここで余裕を調整！ */
   /* overflow: hidden; ← 消すかコメントアウト */
 }
 
@@ -367,17 +467,29 @@ nav ul li a:hover {
   margin: 1em 0;
   border-radius: 8px;
 }
-
 .insta-btn {
   display: inline-block;
-  background: #e63946;
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
   color: #fff;
   padding: 0.8em 1.6em;
-  border-radius: 6px;
+  border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
-  transition: background 0.3s;
+  transition: transform 0.3s;
+  background-size: 200% 200%;
+  animation: gradientMove 5s ease infinite;
 }
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.insta-btn:hover {
+  transform: scale(1.08);
+}
+
 
 .insta-btn:hover {
   background: #b52b36;
