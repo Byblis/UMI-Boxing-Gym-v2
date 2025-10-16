@@ -392,3 +392,115 @@ nav ul li a:hover {
   transform: scale(1.08);
 }
 
+/* ---------- ヘッダー ---------- */
+header {
+  background: #000;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6em 1em;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.menu-btn {
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 0.4em 0.8em;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none; /* PCでは非表示 */
+}
+
+/* ナビ */
+.nav-menu {
+  background: #111;
+  text-align: center;
+  display: none;
+}
+
+.nav-menu.active {
+  display: block;
+  animation: dropdown 0.3s ease-out;
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ナビ内リンク */
+.nav-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 1em 0;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.nav-menu li a:hover {
+  background: #e63946;
+}
+
+/* ---------- PC表示 ---------- */
+@media screen and (min-width: 769px) {
+  .menu-btn { display: none; }
+  .nav-menu {
+    display: block;
+    background: none;
+  }
+  .nav-menu ul {
+    display: flex;
+    justify-content: center;
+  }
+  .nav-menu li {
+    border: none;
+  }
+  .nav-menu li a {
+    padding: 1em;
+  }
+  .nav-menu li a:hover {
+    background: none;
+    color: #e63946;
+  }
+}
+
+/* ---------- スマホ表示 ---------- */
+@media screen and (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+  main {
+    margin-top: 70px;
+  }
+}
