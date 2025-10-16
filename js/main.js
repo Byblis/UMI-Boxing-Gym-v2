@@ -20,3 +20,8 @@ if (menuBtn && nav) {
     nav.classList.toggle('active');
   });
 }
+// ページ読み込み時にメニューを閉じておく（スマホ対策）
+window.addEventListener('pageshow', () => {
+  const nav = document.querySelector('nav');
+  if (nav) nav.classList.remove('active');
+});

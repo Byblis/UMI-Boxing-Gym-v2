@@ -484,7 +484,12 @@ nav ul li a:hover {
   transform: scale(1.08);
 }
 
-
 .insta-btn:hover {
   background: #b52b36;
+}
+/* スマホ表示のとき、ヘッダーとかぶらないよう余白を確保 */
+@media screen and (max-width: 768px) {
+  main {
+    margin-top: 80px; /* ← ヘッダーの高さぶん調整（必要なら90pxに） */
+  }
 }
