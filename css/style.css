@@ -370,15 +370,25 @@ nav ul li a:hover {
 
 .insta-btn {
   display: inline-block;
-  background: #e63946;
+  background: linear-gradient(45deg,
+    #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
   color: #fff;
   padding: 0.8em 1.6em;
-  border-radius: 6px;
+  border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
-  transition: background 0.3s;
+  transition: transform 0.3s;
+  background-size: 200% 200%;
+  animation: gradientMove 5s ease infinite;
+}
+
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .insta-btn:hover {
-  background: #b52b36;
+  transform: scale(1.08);
 }
+
