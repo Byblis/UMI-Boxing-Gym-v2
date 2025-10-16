@@ -15,13 +15,7 @@ window.addEventListener('load', () => {
 const menuBtn = document.querySelector('.menu-btn');
 const nav = document.querySelector('nav');
 
-menuBtn.addEventListener('click', () => {
-  nav.classList.toggle('active');
-});
-
-const menuBtn = document.querySelector('.menu-btn');
-const nav = document.querySelector('nav');
-
-menuBtn.addEventListener('click', () => {
-  nav.classList.toggle('active');
-});
+if (menuBtn && nav) {
+  menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
