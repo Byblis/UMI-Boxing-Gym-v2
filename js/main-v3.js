@@ -1,6 +1,7 @@
-console.log("main.js 最新版 v3"); // ←キャッシュ確認用
+// --- デバッグログ ---
+console.log("main.js 最新版 v4 loaded");
 
-// --- イントロからホームへ遷移 ---
+// --- イントロ → ホーム遷移 ---
 window.addEventListener('load', () => {
   if (document.body.classList.contains('intro-body')) {
     setTimeout(() => {
@@ -9,23 +10,37 @@ window.addEventListener('load', () => {
   }
 });
 
-// --- ハンバーガーメニュー制御 ---
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('hamburger');
-  const navMenu = document.getElementById('nav-menu');
+// --- ハンバーガーメニュー開閉 ---
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.querySelector('.hamburger');
+  const nav = document.querySelector('.nav-menu');
 
-  if (!hamburger || !navMenu) {
-    console.warn("ハンバーガーまたはnav-menuが見つからない");
-    return;
-  }
+  if (!menuBtn || !nav) return;
 
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('open');
+  // 開閉ボタン
+  menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    menuBtn.classList.toggle('open');
   });
 
-  // ページ読み込み時や戻る時には閉じる
-  const closeMenu = () => navMenu.classList.remove('open');
-  window.addEventListener('pageshow', closeMenu);
+  // --- ページ切り替え時には必ず閉じる ---
+  const closeMenu = () => {
+    nav.classList.remove('active');
+    menuBtn.classList.remove('open');
+  };
+
+  // 通常ロード時
   window.addEventListener('load', closeMenu);
+
+  // 履歴から戻った時（スマホSafari/Chrome対策）
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) closeMenu();
+  });
+
+  // メニューのリンクを押したら閉じる（これ重要！）
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
 });
+
 
