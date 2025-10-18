@@ -11,3 +11,11 @@ window.addEventListener('load', () => {
     window.location.href = "home.html";
   },5000); // ← 秒数はここで調整（3000 = 3秒）
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.querySelector(".menu-btn");
+  const navMenu = document.querySelector(".nav-menu");
+
+  menuBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+});
