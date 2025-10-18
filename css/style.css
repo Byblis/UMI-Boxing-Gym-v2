@@ -290,12 +290,8 @@ body {
 
 .insta-btn {
   display: inline-block;
-<<<<<<< HEAD
-  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-=======
   background: linear-gradient(45deg,
     #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
->>>>>>> restore-before-responsive
   color: #fff;
   padding: 0.8em 1.6em;
   border-radius: 30px;
@@ -307,27 +303,16 @@ body {
 }
 
 @keyframes gradientMove {
-<<<<<<< HEAD
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-=======
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
->>>>>>> restore-before-responsive
   100% { background-position: 0% 50%; }
 }
 
 .insta-btn:hover {
   transform: scale(1.08);
 }
-<<<<<<< HEAD
-/* ========== ドロップダウンメニュー ========== */
-
-/* ヘッダー全体 */
-=======
 
 /* ---------- ヘッダー ---------- */
->>>>>>> restore-before-responsive
 header {
   background: #000;
   color: #fff;
@@ -338,10 +323,6 @@ header {
   z-index: 1000;
 }
 
-<<<<<<< HEAD
-/* ロゴとボタン */
-=======
->>>>>>> restore-before-responsive
 .header-inner {
   display: flex;
   justify-content: space-between;
@@ -352,22 +333,6 @@ header {
 .logo {
   font-size: 1.4rem;
   font-weight: bold;
-<<<<<<< HEAD
-  color: #fff;
-}
-
-/* 三本線 */
-.menu-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.8rem;
-  cursor: pointer;
-  display: none;
-}
-
-/* ナビ部分 */
-=======
 }
 
 .menu-btn {
@@ -381,7 +346,6 @@ header {
 }
 
 /* ナビ */
->>>>>>> restore-before-responsive
 .nav-menu {
   background: #111;
   text-align: center;
@@ -393,10 +357,6 @@ header {
   animation: dropdown 0.3s ease-out;
 }
 
-<<<<<<< HEAD
-/* 開閉アニメ */
-=======
->>>>>>> restore-before-responsive
 @keyframes dropdown {
   from {
     opacity: 0;
@@ -434,44 +394,21 @@ header {
 
 /* ---------- PC表示 ---------- */
 @media screen and (min-width: 769px) {
-<<<<<<< HEAD
-  .menu-btn {
-    display: none;
-  }
-
-=======
   .menu-btn { display: none; }
->>>>>>> restore-before-responsive
   .nav-menu {
     display: block;
     background: none;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> restore-before-responsive
   .nav-menu ul {
     display: flex;
     justify-content: center;
   }
-<<<<<<< HEAD
-
-  .nav-menu li {
-    border: none;
-  }
-
-  .nav-menu li a {
-    padding: 1em;
-  }
-
-=======
   .nav-menu li {
     border: none;
   }
   .nav-menu li a {
     padding: 1em;
   }
->>>>>>> restore-before-responsive
   .nav-menu li a:hover {
     background: none;
     color: #e63946;
@@ -483,10 +420,6 @@ header {
   .menu-btn {
     display: block;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> restore-before-responsive
   main {
     margin-top: 70px;
   }
