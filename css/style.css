@@ -10,7 +10,7 @@
 :root {
   --bg: #000;
   --fg: #fff;
-  --accent: #e63946;
+  --accent: #6139e6;
 }
 
 body {
@@ -389,7 +389,7 @@ header {
 }
 
 .nav-menu li a:hover {
-  background: #e63946;
+  background: #6139e6;
 }
 
 /* ---------- PC表示 ---------- */
@@ -411,7 +411,7 @@ header {
   }
   .nav-menu li a:hover {
     background: none;
-    color: #e63946;
+    color: #6139e6;
   }
 }
 
