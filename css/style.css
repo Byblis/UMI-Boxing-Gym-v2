@@ -676,8 +676,7 @@ header {
     -webkit-backdrop-filter: blur(8px) !important;
     z-index: 3000 !important;
     overflow-y: auto !important;
-    padding-top: 1.5em !important; /* ← 少し上に余裕 */
-  }
+   padding: 0.55em 0 !important;
 
   .nav-menu.active li {
     width: 100% !important;
