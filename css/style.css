@@ -155,16 +155,21 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 150vh; /* ← ここで縦を広くする */
   overflow: hidden;
   margin-top: 60px;
 }
 
 .hero img {
+  position: absolute; /* ← これがポイント！ */
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0;
+  animation: slideShow 15s infinite;
 }
 
 .hero-text {
@@ -428,7 +433,7 @@ header {
 .slider {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -439,6 +444,7 @@ header {
   object-fit: cover;
   opacity: 0;
   animation: slideShow 15s infinite;
+  object-position: center center;
 }
 
 .slider img:nth-child(1) { animation-delay: 0s; }
@@ -451,4 +457,132 @@ header {
   30%  { opacity: 1; }
   35%  { opacity: 0; }
   100% { opacity: 0; }
+}
+/* ---------- ヘッダー ---------- */
+header {
+  background: #000;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 60px; /* ← ヘッダー全体の高さを固定 */
+  display: flex;
+  align-items: center; /* ← 中央寄せ */
+}
+
+/* 内側ラッパー */
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* メニュー全体 */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  align-items: center; /* ← 文字を中央に揃える */
+  margin: 0;
+  padding: 0;
+  height: 60px; /* ← ヘッダーと高さを合わせる */
+}
+
+/* 各メニューリンク */
+.nav-menu li a {
+  display: flex;
+  align-items: center; /* ← テキストを縦中央に */
+  justify-content: center;
+  height: 60px; /* ← 絶対高さ */
+  padding: 0 1em; /* ← 横だけスペース */
+  line-height: 1; /* ← フォント行間のズレ防止 */
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+header {
+  background: #000;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ← ここ重要：メニューを折り返さない！ */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+  height: 60px;
+  white-space: nowrap; /* ← 折り返し禁止！ */
+  gap: 2em;
+}
+
+.nav-menu li {
+  border: none;
+}
+
+/* ← メニューの文字を縦中央・横に余裕 */
+.nav-menu li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  padding: 0 1em;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.nav-menu li a:hover {
+  color: #6139e6;
+}
+.fee-entry h3,
+.fee-section h3 {
+  display: inline-block;         /* ← 下線を文字幅に合わせる */
+  border-bottom: 2px solid #fff; /* ← 白い下線 */
+  padding-bottom: 0.3em;         /* ← 下線との余白 */
+  margin-bottom: 0.6em;          /* ← 下のテキストとの間 */
+}
+.hours h2,
+.fee-box h2,
+.access-box h2,
+.contact h2 {
+  margin-top: 100px;    /* ← タイトルの上の余白を統一 */
+  margin-bottom: 1em;
+  color: var(--accent);
+  font-size: 2rem;
+  text-align: center;
+}
+/* ===== 全ページタイトル位置統一 ===== */
+.hours,
+.fee-box,
+.access-box,
+.contact {
+  margin-top: 150px !important;
+  padding-top: 0 !important;    /* ← 万が一paddingが入ってたらリセット */
 }
