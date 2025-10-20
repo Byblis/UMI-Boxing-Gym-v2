@@ -316,6 +316,58 @@ body {
 .insta-btn:hover {
   transform: scale(1.08);
 }
+/* --- contactページ用（独立スタイル）--- */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3em;
+  margin-top: 2em;
+}
+
+.contact-box {
+  text-align: center;
+  max-width: 500px;
+}
+
+.contact-box h3 {
+  color: var(--accent);
+  font-size: 1.4rem;
+  margin-bottom: 0.5em;
+}
+
+.tel-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.tel-link:hover {
+  color: var(--accent);
+}
+
+.contact-box .qr {
+  width: 220px;
+  border-radius: 10px;
+  margin-top: 1em;
+}
+
+.line-btn {
+  display: block;           /* ← インラインからブロックに変更 */
+  background: #06C755;
+  color: #fff;
+  padding: 0.8em 1.6em;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s;
+  margin: 1em auto 0;       /* ← 中央寄せ＆QRとの余白 */
+  width: fit-content;       /* ← ボタン幅を文字に合わせる */
+}
+
+.line-btn:hover {
+  transform: scale(1.08);
+}
 
 /* ---------- ヘッダー ---------- */
 header {
