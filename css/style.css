@@ -700,3 +700,18 @@ header {
     color: #9c7bff !important;
   }
 }
+@media screen and (max-width: 768px) {
+  .nav-menu ul {
+    padding: 0 !important;
+    margin: 0 !important;   /* ← これでリスト全体の余白削除！ */
+  }
+
+  .nav-menu li {
+    margin: 0 !important;   /* ← 各項目間の縦余白を完全に消す！ */
+    padding: 0 !important;
+  }
+
+  .nav-menu li a {
+    padding: 0.4em 0 !important; /* ← 押しやすさを残しつつ最小限 */
+  }
+}
