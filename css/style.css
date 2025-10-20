@@ -686,7 +686,7 @@ header {
     display: block !important;
     width: 100% !important;
     text-align: center !important;
-    padding: 0.55em 0 !important; 
+     padding: 0.35em 0 !important;  /* ← 限界まで詰め！ */
     font-size: 1.1rem !important;
     font-weight: 600 !important;
     color: #fff !important;
