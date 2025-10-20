@@ -676,8 +676,7 @@ header {
     -webkit-backdrop-filter: blur(8px) !important;
     z-index: 3000 !important;
     overflow-y: auto !important;
-   padding: 0.55em 0 !important;
-
+  }
   .nav-menu.active li {
     width: 100% !important;
     border-top: 1px solid rgba(255,255,255,0.15) !important;
@@ -687,7 +686,7 @@ header {
     display: block !important;
     width: 100% !important;
     text-align: center !important;
-    padding: 0.8em 0 !important;  /* ← これで高さ調整！ */
+    padding: 0.55em 0 !important; 
     font-size: 1.1rem !important;
     font-weight: 600 !important;
     color: #fff !important;
