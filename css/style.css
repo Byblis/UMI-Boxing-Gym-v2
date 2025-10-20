@@ -534,29 +534,8 @@ header {
   margin: 0 auto;
 }
 
-/* メニュー全体 */
-.nav-menu ul {
-  list-style: none;
-  display: flex;
-  align-items: center; /* ← 文字を中央に揃える */
-  margin: 0;
-  padding: 0;
-  height: 60px; /* ← ヘッダーと高さを合わせる */
-}
-
 /* 各メニューリンク */
-.nav-menu li a {
-  display: flex;
-  align-items: center; /* ← テキストを縦中央に */
-  justify-content: center;
-  height: 60px; /* ← 絶対高さ */
-  padding: 0 1em; /* ← 横だけスペース */
-  line-height: 1; /* ← フォント行間のズレ防止 */
-  color: #fff;
-  font-weight: bold;
-  letter-spacing: 0.05em;
-  text-decoration: none;
-}
+
 header {
   background: #000;
   color: #fff;
@@ -655,4 +634,33 @@ header {
   object-fit: cover;
   object-position: center 30%; /* ← 中心よりちょっと上を見せる */
   display: block;
+}
+/* ==============================
+   スマホ時のナビゲーション修正
+   ============================== */
+@media screen and (max-width: 768px) {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 60px; /* ← ヘッダーの高さに合わせて */
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 2000; /* ← 動画やタイトルより上に！ */
+    max-height: 90vh;
+    overflow-y: auto; /* ← はみ出す分はスクロール */
+  }
+
+  .hero video {
+    position: relative;
+    z-index: 1; /* ← メニューより下 */
+  }
 }
