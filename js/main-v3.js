@@ -17,11 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
   menuBtn.addEventListener('click', () => {
     nav.classList.toggle('active');
   });
-
-  // ページ遷移やロード時に閉じる
-  window.addEventListener('pageshow', () => nav.classList.remove('active'));
-  window.addEventListener('load', () => nav.classList.remove('active'));
 });
+
+
+
 
 
 

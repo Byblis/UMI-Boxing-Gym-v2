@@ -112,35 +112,6 @@ body {
   border-radius: 3px;
 }
 
-/* --- スマホ時 --- */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.9);
-    text-align: center;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-  }
-
-  .nav-menu.open {
-    display: flex;
-  }
-
-  .nav-menu ul {
-    flex-direction: column;
-  }
-
-  .nav-menu li {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-  }
-}
 
 /* main の位置調整（スマホでかぶらないように） */
 @media screen and (max-width: 768px) {
@@ -635,32 +606,99 @@ header {
   object-position: center 30%; /* ← 中心よりちょっと上を見せる */
   display: block;
 }
+
 /* ==============================
-   スマホ時のナビゲーション修正
+   📱スマホ最終レイアウト強制上書き
    ============================== */
 @media screen and (max-width: 768px) {
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.9);
-  }
-
   .nav-menu {
-    position: fixed;
-    top: 60px; /* ← ヘッダーの高さに合わせて */
-    left: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.95);
-    z-index: 2000; /* ← 動画やタイトルより上に！ */
-    max-height: 90vh;
-    overflow-y: auto; /* ← はみ出す分はスクロール */
+    display: none !important;
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100vh - 60px) !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    z-index: 3000 !important;
+    overflow-y: auto !important;
   }
 
-  .hero video {
-    position: relative;
-    z-index: 1; /* ← メニューより下 */
+  .nav-menu.active {
+    display: flex !important;
+  }
+
+  .nav-menu ul {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .nav-menu li {
+    width: 100% !important;
+    border-top: 1px solid rgba(255,255,255,0.2) !important;
+  }
+
+  .nav-menu li a {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 1.2em 0 !important;
+    font-size: 1.2rem !important;
+    color: #fff !important;
+    text-decoration: none !important;
+  }
+
+  .nav-menu li a:hover {
+    background: rgba(255,255,255,0.1) !important;
+    color: #9c7bff !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .nav-menu.active {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100vh - 60px) !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    z-index: 3000 !important;
+    overflow-y: auto !important;
+    padding-top: 1.5em !important; /* ← 少し上に余裕 */
+  }
+
+  .nav-menu.active li {
+    width: 100% !important;
+    border-top: 1px solid rgba(255,255,255,0.15) !important;
+  }
+
+  .nav-menu.active li a {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 0.8em 0 !important;  /* ← これで高さ調整！ */
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  .nav-menu.active li a:hover {
+    background: rgba(255,255,255,0.1) !important;
+    color: #9c7bff !important;
   }
 }
