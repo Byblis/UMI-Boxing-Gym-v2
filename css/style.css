@@ -13,6 +13,10 @@
   --accent: #6139e6;
 }
 
+main {
+  margin-top: 100px; /* ← ヘッダー60px＋αの余白を確保 */
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', 'Noto Sans JP', sans-serif;
@@ -715,4 +719,51 @@ header {
   .nav-menu li a {
     padding: 0.4em 0 !important; /* ← 押しやすさを残しつつ最小限 */
   }
+}
+.videos {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.videos h2 {
+  font-size: 2rem;
+  color: #6139e6;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.videos p {
+  color: #666;
+  margin-bottom: 32px;
+  font-size: 1rem;
+}
+
+.video-item {
+  background: #111; /* 黒背景でジムっぽく */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+}
+
+.video-item video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+}
+
+.video-item p {
+  padding: 10px;
+  color: #fff;
+  font-size: 0.95rem;
+  background: linear-gradient(90deg, #d92525 0%, #000 100%);
+  text-align: center;
+  letter-spacing: 0.5px;
 }
