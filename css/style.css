@@ -10,7 +10,7 @@
 :root {
   --bg: #000;
   --fg: #fff;
-  --accent: #6139e6;
+  --accent: #3a55e0;
 }
 
 main {
@@ -422,7 +422,7 @@ header {
 }
 
 .nav-menu li a:hover {
-  background: #6139e6;
+  background: #3a55e0;
 }
 
 /* ---------- PC表示 ---------- */
@@ -444,7 +444,7 @@ header {
   }
   .nav-menu li a:hover {
     background: none;
-    color: #6139e6;
+    color: #3a55e0;
   }
 }
 
@@ -567,7 +567,7 @@ header {
 }
 
 .nav-menu li a:hover {
-  color: #6139e6;
+  color: #3a55e0;
 }
 .fee-entry h3,
 .fee-section h3 {
@@ -730,7 +730,7 @@ header {
 
 .videos h2 {
   font-size: 2rem;
-  color: #6139e6;
+  color: #3a55e0;
   margin-bottom: 8px;
   letter-spacing: 1px;
 }
