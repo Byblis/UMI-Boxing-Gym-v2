@@ -827,3 +827,118 @@ header {
   text-shadow: none !important;
   -webkit-font-smoothing: none !important;
 }
+
+    .faq {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .faq h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #3a55e0;
+      position: relative;
+    }
+
+    .faq h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: ;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+    }
+
+    .faq-question {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      padding: 10px;
+      transition: background 0.3s;
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 10px;
+      font-size: 1.4rem;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.active .faq-question::after {
+      content: '−';
+    }
+
+    .faq-question:hover {
+      background: #fafafa;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-answer p {
+      margin: 10px 0 0;
+      padding: 0 10px;
+      color: #555;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+    }
+
+   .faq-question {
+  color: #fff;
+}
+
+
+.faq-question {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+  transition: background 0.3s;
+  color: #fff;
+}
+
+.faq-question:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.faq-answer p {
+  margin: 10px 0 0;
+  padding: 0 10px;
+  color: #ddd;
+  font-size: 1.2rem;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  opacity: 1;
+}

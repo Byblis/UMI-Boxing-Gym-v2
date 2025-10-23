@@ -18,8 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
     nav.classList.toggle('active');
   });
 });
+// ───────────────
+// FAQの開閉（＋−なしver）
+// ───────────────
 
+document.addEventListener('DOMContentLoaded', () => {
+  const questions = document.querySelectorAll('.faq-question');
+  if (questions.length > 0) {
+    questions.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+  }
+});
 
+  
 
 
 
