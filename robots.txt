@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://byblis.github.io/UMI-Boxing-Gym-v2/sitemap.xml
