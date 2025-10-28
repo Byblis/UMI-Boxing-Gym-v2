@@ -1513,3 +1513,20 @@ body.modal-open {
     observer.observe(modal, { attributes: true, attributeFilter: ['class'] });
   }
 })();
+/* ======================================================
+   📱 モーダル時に全体を完全固定（スマホ対応）
+====================================================== */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  touch-action: none !important; /* ← スワイプ・ピンチ全部無効 */
+}
+
+html.modal-open {
+  overflow: hidden !important;
+  height: 100vh !important;
+}

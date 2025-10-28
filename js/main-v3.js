@@ -90,65 +90,31 @@ document.addEventListener("DOMContentLoaded", () => {
   modal.addEventListener("click", closeModal);
 });
 
-// ================================
-// 🎥 画像・動画のモーダル表示（スマホ対応版）
-// ================================
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("mediaModal");
   const modalVideo = document.getElementById("modalVideo");
   const modalImg = document.getElementById("modalImg");
   const closeBtn = document.querySelector(".close-btn");
 
-  // 各 player-card のクリックで拡大
-  document.querySelectorAll(".player-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const video = card.querySelector("video");
-      const img = card.querySelector("img");
-      
-      modal.classList.add("active");
-      
-      if (video) {
-        // 🔧 モバイル対応（currentSrc優先）
-        const src = video.currentSrc || video.src || (video.querySelector("source")?.src);
-        modalVideo.src = src;
-        modalVideo.style.display = "block";
-        modalImg.style.display = "none";
-        modalVideo.play().catch(()=>{}); // 自動再生制限対策
-      } else if (img) {
-        modalImg.src = img.src;
-        modalImg.style.display = "block";
-        modalVideo.style.display = "none";
-      }
-    });
-  });
-
-  // ✨ 閉じる処理（×ボタン・背景・再クリック）
-  const closeModal = () => {
-    modal.classList.remove("active");
-    modalVideo.pause();
-    modalVideo.removeAttribute("src");
-    modalImg.removeAttribute("src");
+  // 背景固定する処理
+  const lockBody = () => {
+    document.body.classList.add("modal-open");
+    document.documentElement.classList.add("modal-open");
   };
 
-  closeBtn.addEventListener("click", closeModal);
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("mediaModal");
-  const modalVideo = document.getElementById("modalVideo");
-  const modalImg = document.getElementById("modalImg");
-  const closeBtn = document.querySelector(".close-btn");
+  const unlockBody = () => {
+    document.body.classList.remove("modal-open");
+    document.documentElement.classList.remove("modal-open");
+  };
 
-  // カードクリックでモーダル表示
+  // モーダル開く
   document.querySelectorAll(".player-card").forEach(card => {
     card.addEventListener("click", () => {
       const video = card.querySelector("video");
       const img = card.querySelector("img");
-
+      
       modal.classList.add("active");
-      document.body.classList.add("modal-open"); // ← 背景固定！
+      lockBody(); // ← 背景完全固定！
 
       if (video) {
         modalVideo.src = video.querySelector("source").src;
@@ -162,20 +128,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 閉じるボタンまたは背景クリックで閉じる
+  // モーダル閉じる
   const closeModal = () => {
     modal.classList.remove("active");
-    document.body.classList.remove("modal-open"); // ← 背景解除！
+    unlockBody(); // ← 背景解除
     modalVideo.pause();
     modalVideo.removeAttribute("src");
     modalImg.removeAttribute("src");
   };
 
   closeBtn.addEventListener("click", closeModal);
-  modal.addEventListener("click", (e) => {
+  modal.addEventListener("click", e => {
     if (e.target === modal) closeModal();
   });
 });
+
 
 
 
