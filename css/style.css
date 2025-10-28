@@ -1391,3 +1391,85 @@ html, body, header, main, .players-section, .players-grid {
   -webkit-overflow-scrolling: touch !important;
 }
 
+/* ======================================================
+   🖼️ モーダル中央配置・スマホ対応
+====================================================== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;                       /* 画面全体に広げる */
+  background: rgba(0,0,0,0.9);
+  justify-content: center;        /* ← 中央寄せ */
+  align-items: center;            /* ← 中央寄せ */
+  z-index: 2000;                  /* ← 最前面 */
+  padding: 20px;                  /* ← 画面端との余白 */
+  box-sizing: border-box;
+}
+
+.modal.active {
+  display: flex;                  /* ← Flexで中央配置ON！ */
+}
+
+.modal img,
+.modal video {
+  max-width: 90vw;                /* ← 横幅は画面の9割 */
+  max-height: 90vh;               /* ← 縦も画面の9割まで */
+  border-radius: 12px;
+  object-fit: contain;            /* ← 画像や動画の縦横比維持 */
+  display: block;
+  margin: auto;                   /* ← 中央寄せ（念のため） */
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2100; /* ← 画像の上に表示 */
+}
+
+/* ======================================================
+   🎯 モーダル完全中央配置（スマホ・PC両対応）
+====================================================== */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;  /* ← 中央上下揃え */
+  z-index: 3000;
+}
+
+.modal.active {
+  display: flex !important;  /* ← これが超重要！ */
+}
+
+.modal video,
+.modal img {
+  display: block;
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.8);
+}
+
+/* ✖ボタン */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 2.4rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 3100;
+}
+
