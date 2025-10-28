@@ -43,47 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-// ==============================
-// クリックで拡大（画像／動画対応）
-// ==============================
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.player-card');
-  const modal = document.getElementById('mediaModal');
-  const modalVideo = document.getElementById('modalVideo');
-  const modalImg = document.getElementById('modalImg');
-  const closeBtn = document.querySelector('.close-btn');
-
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const video = card.querySelector('video');
-      const img = card.querySelector('img');
-
-      if (video) {
-        modalVideo.src = video.querySelector('source').src;
-        modalVideo.style.display = 'block';
-        modalImg.style.display = 'none';
-      } else if (img) {
-        modalImg.src = img.src;
-        modalImg.style.display = 'block';
-        modalVideo.style.display = 'none';
-      }
-
-      modal.classList.add('active');
-    });
-  });
-
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-    modalVideo.pause();
-  });
-
-  modal.addEventListener('click', e => {
-    if (e.target === modal) {
-      modal.classList.remove('active');
-      modalVideo.pause();
-    }
-  });
-});
 
 // ================================
 // 🎥 画像・動画のモーダル表示
@@ -131,6 +90,51 @@ document.addEventListener("DOMContentLoaded", () => {
   modal.addEventListener("click", closeModal);
 });
 
+// ================================
+// 🎥 画像・動画のモーダル表示（スマホ対応版）
+// ================================
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("mediaModal");
+  const modalVideo = document.getElementById("modalVideo");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.querySelector(".close-btn");
+
+  // 各 player-card のクリックで拡大
+  document.querySelectorAll(".player-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const video = card.querySelector("video");
+      const img = card.querySelector("img");
+      
+      modal.classList.add("active");
+      
+      if (video) {
+        // 🔧 モバイル対応（currentSrc優先）
+        const src = video.currentSrc || video.src || (video.querySelector("source")?.src);
+        modalVideo.src = src;
+        modalVideo.style.display = "block";
+        modalImg.style.display = "none";
+        modalVideo.play().catch(()=>{}); // 自動再生制限対策
+      } else if (img) {
+        modalImg.src = img.src;
+        modalImg.style.display = "block";
+        modalVideo.style.display = "none";
+      }
+    });
+  });
+
+  // ✨ 閉じる処理（×ボタン・背景・再クリック）
+  const closeModal = () => {
+    modal.classList.remove("active");
+    modalVideo.pause();
+    modalVideo.removeAttribute("src");
+    modalImg.removeAttribute("src");
+  };
+
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+});
 
 
 
