@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+　<title>営業日時 | UMI Boxing Gym</title>
+<meta name="description" content="UMI Boxing Gymの営業時間や休館日情報を掲載しています。">
+<meta name="keywords" content="ボクシング, 福岡, ジム, 営業時間, 休刊日">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+  <div class="header-inner">
+    <h1 class="logo">UMI Boxing Gym</h1>
+    <button class="menu-btn">MENU</button>
+  </div>
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="hours.html">営業時間</a></li>
+      <li><a href="players.html">選手紹介</a></li>
+      <li><a href="videos.html">練習風景</a></li>
+      <li><a href="fees.html">入会金・会費</a></li>
+      <li><a href="access.html">ACCESS</a></li>
+      <li><a href="contact.html">お問い合わせ</a></li>
+      <li><a href="question.html">よくある質問</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="players-section">
+    <h2>選手紹介</h2>
+
+    <div class="players-grid">
+      <article class="player-card">
+        <div class="player-photo-wrap">
+          <img src="images/player1.jpg" alt="高山淳司選手" class="player-photo">
+          <div class="player-info">
+            <h3>高山　淳司</h3>
+            <p class="record">R４０.R５０九州地区ライト級チャンピオン<br>Oyaji Fight戦績３戦３勝（３KO）</p>
+            <p class="intro"></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="player-card">
+        <div class="player-photo-wrap">
+          <video class="player-photo" autoplay muted loop playsinline>
+      <source src="videos/player2.mp4" type="video/mp4">
+      お使いのブラウザは動画タグに対応していません。
+    　　　</video>
+          <div class="player-info">
+            <h3>シンデレラボーイ翔世</h3>
+            <p class="record">１１戦６勝２KO５敗</p>
+            <p class="intro"></p>
+          </div>
+        </div>
+      </article>
+      <article class="player-card">
+        <div class="player-photo-wrap">
+          <img src="images/player3.jpg" alt="野添健太郎選手" class="player-photo">
+          <div class="player-info">
+            <h3>野添　健太郎</h3>
+            <p class="record">Oyaji Fight戦績１勝１敗</p>
+            <p class="intro"></p>
+          </div>
+        </div>
+      </article>
+      <article class="player-card">
+        <div class="player-photo-wrap">
+          <img src="images/player4.jpg" alt="屋久祐樹選手" class="player-photo">
+          <div class="player-info">
+            <h3>屋久　祐樹</h3>
+            <p class="record">Oyaji Figft戦績２戦１敗（１KO）１敗<br>WBC戦績１戦１勝</p>
+            <p class="intro"></p>
+          </div>
+        </div>
+      </article>
+      <article class="player-card">
+        <div class="player-photo-wrap">
+          <img src="images/player5.jpg" alt="藤武孝選手" class="player-photo">
+          <div class="player-info">
+            <h3>藤武　孝</h3>
+            <p class="record">Oyaji fight戦績１戦１勝</p>
+            <p class="intro"></p>
+          </div>
+        </div>
+      </article>
+      <article class="player-card">
+        <div class="player-photo-wrap">
+          <img src="images/player6.jpg" alt="白木秀和選手" class="player-photo">
+          <div class="player-info">
+            <h3>白木　秀和</h3>
+            <p class="record">Oyaji Fight戦績２戦２敗</p>
+            <p class="intro"></p>
+          </div>
+        </div>
+      </article>
+      <article class="player-card">
+        <div class="player-photo-wrap">
+          <img src="images/player7.jpg" alt="篠田義生選手" class="player-photo">
+          <div class="player-info">
+            <h3>篠田　義生</h3>
+            <p class="record">スパーリング大会２戦１勝１敗</p>
+            <p class="intro"></p>
+          </div>
+        </div>
+      </article>
+      <article class="player-card">
+        <div class="player-photo-wrap">
+          <img src="images/player8.jpg" alt="高山大樹選手" class="player-photo">
+          <div class="player-info">
+            <h3>高山　大樹</h3>
+            <p class="record">スパーリング大会戦績１戦1勝</p>
+            <p class="intro"></p>
+          </div>
+        </div>
+      </article>
+      
+    </div>
+  </main>
+  <div class="modal" id="mediaModal">
+  <span class="close-btn">&times;</span>
+  <video id="modalVideo" controls playsinline></video>
+  <img id="modalImg" alt="">
+</div>
+ <script src="js/main-v3.js"></script>
+</body>
+</html>
