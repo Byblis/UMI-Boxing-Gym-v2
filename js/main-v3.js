@@ -135,6 +135,47 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === modal) closeModal();
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("mediaModal");
+  const modalVideo = document.getElementById("modalVideo");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.querySelector(".close-btn");
+
+  // カードクリックでモーダル表示
+  document.querySelectorAll(".player-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const video = card.querySelector("video");
+      const img = card.querySelector("img");
+
+      modal.classList.add("active");
+      document.body.classList.add("modal-open"); // ← 背景固定！
+
+      if (video) {
+        modalVideo.src = video.querySelector("source").src;
+        modalVideo.style.display = "block";
+        modalImg.style.display = "none";
+      } else if (img) {
+        modalImg.src = img.src;
+        modalImg.style.display = "block";
+        modalVideo.style.display = "none";
+      }
+    });
+  });
+
+  // 閉じるボタンまたは背景クリックで閉じる
+  const closeModal = () => {
+    modal.classList.remove("active");
+    document.body.classList.remove("modal-open"); // ← 背景解除！
+    modalVideo.pause();
+    modalVideo.removeAttribute("src");
+    modalImg.removeAttribute("src");
+  };
+
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+});
 
 
 

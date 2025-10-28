@@ -1473,3 +1473,12 @@ html, body, header, main, .players-section, .players-grid {
   z-index: 3100;
 }
 
+/* ======================================================
+   🧊 モーダル中は背景スクロール完全ストップ！
+====================================================== */
+body.modal-open {
+  overflow: hidden !important;
+  height: 100vh !important;
+  position: fixed !important;
+  width: 100% !important;
+}
