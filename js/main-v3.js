@@ -7,17 +7,19 @@ window.addEventListener('load', () => {
   }
 });
 
-// ドロップダウンメニュー開閉
-document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn = document.querySelector('.menu-btn');
-  const nav = document.querySelector('.nav-menu');
-
+// ================================
+// 🍔 ドロップダウンメニュー開閉
+// ================================
+window.addEventListener("load", () => {
+  const menuBtn = document.querySelector(".menu-btn");
+  const nav = document.querySelector(".nav-menu");
   if (!menuBtn || !nav) return;
 
-  menuBtn.addEventListener('click', () => {
-    nav.classList.toggle('active');
+  menuBtn.addEventListener("click", () => {
+    nav.classList.toggle("active");
   });
 });
+
 // ───────────────
 // FAQの開閉（＋−なしver）
 // ───────────────
