@@ -1297,3 +1297,19 @@ body.modal-open {
   width: 100%;
   box-sizing: border-box;
 }
+main p {
+  text-align: center;
+  font-size: 1.2rem;      /* ← 少し大きく */
+  line-height: 2;         /* ← 行間を広めに */
+  color: #fff;            /* ← 黒背景で見やすく */
+  margin: 60px auto;      /* ← 上下の余白を広げる */
+  max-width: 800px;       /* ← 読みやすい横幅に制限 */
+}
+.videos p {
+  text-align: center;
+  font-size: 1.2rem;     /* ← 少し大きめ */
+  color: #fff;
+  margin-top: -10px;     /* ← 上に近づける */
+  margin-bottom: 40px;   /* ← 下の動画との間に余白 */
+  line-height: 1.8;
+}
