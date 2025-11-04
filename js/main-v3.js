@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
 });
 
 // ================================
-// 🍔 ドロップダウンメニュー開閉
+//   ドロップダウンメニュー開閉
 // ================================
 window.addEventListener("load", () => {
   const menuBtn = document.querySelector(".menu-btn");
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ================================
-// 🎥 画像・動画のモーダル表示
+//   画像・動画のモーダル表示
 // ================================
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("mediaModal");
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ✨ 閉じるボタン または モーダル背景クリックで閉じる
+  //   閉じるボタン または モーダル背景クリックで閉じる
   const closeModal = () => {
     modal.classList.remove("active");
     modalVideo.pause();
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === modal) closeModal(); // 背景クリックで閉じる
   });
 
-  // 🎯 再クリックでも閉じる
+  //   再クリックでも閉じる
   modal.addEventListener("click", closeModal);
 });
 
