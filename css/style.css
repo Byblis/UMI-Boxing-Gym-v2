@@ -1126,3 +1126,174 @@ body.modal-open {
 .players-grid.dragging {
   cursor: grabbing;
 }
+.player-photo {
+  width: 100%;
+  max-height: 300px;      /* ← 高すぎないように制限（調整OK） */
+  display: block;
+  border-radius: 8px;
+  height: 300px; /* ← 全カード統一 */
+  object-fit: cover; /* ← 枠いっぱいに切り取り */
+  object-position: center top; /* ← 顔が上に来るよう調整も可 */
+}
+.players-section {
+  overflow: hidden; /* 全体を守る。これでh2やヘッダーは動かない */
+  padding: 20px;
+}
+
+.players-grid {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;       /* 横スクロールON */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* スマホのスワイプなめらか */
+  padding-bottom: 10px;
+}
+
+.player-card {
+  flex: 0 0 auto;          /* 横並び固定 */
+  scroll-snap-align: start;
+  width: 240px;
+  border-radius: 12px;
+  background: #111;
+}
+.players-section {
+  padding: 20px;
+  overflow: hidden; /* ← 全体のズレ防止 */
+}
+
+.players-section h2 {
+  font-size: 2rem;
+  color: #3b82f6; /* 青文字 */
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+/* 横スクロール領域 */
+.players-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+/* グリッド部分 */
+.players-grid {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 12px;
+  scroll-snap-align: start;
+}
+
+/* 各カード */
+.player-card {
+  flex: 0 0 auto;
+  width: 240px;
+  background: #111;
+  border-radius: 10px;
+  color: #fff;
+  scroll-snap-align: start;
+}
+/* ---- メイン構造 ---- */
+.players-section {
+  padding: 20px;
+  overflow: hidden; /* ← 全体のスクロール抑制 */
+}
+
+.players-section h2 {
+  font-size: 2rem;
+  color: #3b82f6;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* ---- 横スクロールをカードだけに限定 ---- */
+.players-grid {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;              /* ← 横スクロールON */
+  overflow-y: hidden;            /* ← 縦スクロールOFF */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 12px;
+  scroll-behavior: smooth;       /* ← スクロールなめらかに */
+  width: 100vw;                  /* ← 横幅を画面幅に固定！ */
+  position: relative;
+}
+
+/* ---- 各カード ---- */
+.player-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 240px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+}
+.players-grid {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 12px;
+  scroll-behavior: smooth;
+  justify-content: center;     /* ← 中央寄せ */
+  max-width: 100%;             /* ← 画面幅に収める */
+  margin: 0 auto;              /* ← 左右中央 */
+}
+/* ---- 選手紹介全体 ---- */
+.players-section {
+  margin: 0 auto;
+  padding: 40px 0 60px;
+  text-align: center;
+  overflow: hidden;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* ---- 見出し ---- */
+.players-section h2 {
+  color: #3b82f6;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center; /* ← 左寄せから変更！ */
+}
+
+/* ---- 横スクロール領域 ---- */
+.players-grid {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 0 20px 20px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ---- カード ---- */
+.player-card {
+  flex: 0 0 auto;
+  width: 240px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  scroll-snap-align: start;
+}
+.players-grid {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0; /* ← 左スナップ補正 */
+  padding: 0 0 20px;      /* ← 左右の余白削除 */
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}

@@ -1,6 +1,8 @@
-// イントロ→HOME遷移
-window.addEventListener('load', () => {
-  if (document.body.classList.contains('intro-body')) {
+// ================================
+// 🚀 イントロ → HOME 遷移
+// ================================
+window.addEventListener("load", () => {
+  if (document.body.classList.contains("intro-body")) {
     setTimeout(() => {
       window.location.href = "home.html";
     }, 5000);
@@ -8,7 +10,7 @@ window.addEventListener('load', () => {
 });
 
 // ================================
-//   ドロップダウンメニュー開閉
+// 📋 ドロップダウンメニュー開閉
 // ================================
 window.addEventListener("load", () => {
   const menuBtn = document.querySelector(".menu-btn");
@@ -21,47 +23,39 @@ window.addEventListener("load", () => {
 });
 
 // ================================
-//   FAQ 開閉
+// ❓ FAQ 開閉
 // ================================
 document.addEventListener("DOMContentLoaded", () => {
-  const questions = document.querySelectorAll(".faq-question");
-  if (questions.length > 0) {
-    questions.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        btn.parentElement.classList.toggle("active");
-      });
+  document.querySelectorAll(".faq-question").forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.parentElement.classList.toggle("active");
     });
-  }
+  });
 });
 
 // ================================
-//   現在ページのナビ強調
+// 🧭 現在ページのナビ強調
 // ================================
 document.addEventListener("DOMContentLoaded", () => {
   const here = location.pathname.split("/").pop();
-  document.querySelectorAll(".nav-menu a").forEach((a) => {
+  document.querySelectorAll(".nav-menu a").forEach(a => {
     if (a.getAttribute("href") === here) a.classList.add("active");
   });
 });
 
 // ================================
-//   モーダル（画像・動画）
+// 🎥 モーダル（画像・動画拡大）
+// ================================
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("mediaModal");
   const modalVideo = document.getElementById("modalVideo");
   const modalImg = document.getElementById("modalImg");
   const closeBtn = document.querySelector(".close-btn");
 
-  const lockBody = () => {
-    document.body.classList.add("modal-open");
-    document.documentElement.classList.add("modal-open");
-  };
-  const unlockBody = () => {
-    document.body.classList.remove("modal-open");
-    document.documentElement.classList.remove("modal-open");
-  };
+  const lockBody = () => document.body.classList.add("modal-open");
+  const unlockBody = () => document.body.classList.remove("modal-open");
 
-  document.querySelectorAll(".player-card").forEach((card) => {
+  document.querySelectorAll(".player-card").forEach(card => {
     card.addEventListener("click", () => {
       const video = card.querySelector("video");
       const img = card.querySelector("img");
@@ -90,13 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   closeBtn.addEventListener("click", closeModal);
-  modal.addEventListener("click", (e) => {
+  modal.addEventListener("click", e => {
     if (e.target === modal) closeModal();
   });
 });
 
 // ================================
-// 🖱️ ドラッグで横スクロール
+// 🖱️ PC用：ドラッグで横スクロール
 // ================================
 document.addEventListener("DOMContentLoaded", () => {
   const slider = document.querySelector(".players-grid");
@@ -113,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollLeft = slider.scrollLeft;
   });
 
-  ["mouseleave", "mouseup"].forEach((event) =>
+  ["mouseleave", "mouseup"].forEach(event =>
     slider.addEventListener(event, () => {
       isDown = false;
       slider.classList.remove("dragging");
@@ -124,12 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1.3; // ← スクロール速度調整
+    const walk = (x - startX) * 1.3;
     slider.scrollLeft = scrollLeft - walk;
   });
 });
-
-
-
 
 
