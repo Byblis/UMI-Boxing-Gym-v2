@@ -20,49 +20,55 @@ window.addEventListener("load", () => {
   });
 });
 
-// ───────────────
-// FAQの開閉（＋−なしver）
-// ───────────────
-
-document.addEventListener('DOMContentLoaded', () => {
-  const questions = document.querySelectorAll('.faq-question');
+// ================================
+//   FAQ 開閉
+// ================================
+document.addEventListener("DOMContentLoaded", () => {
+  const questions = document.querySelectorAll(".faq-question");
   if (questions.length > 0) {
-    questions.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        item.classList.toggle('active');
+    questions.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        btn.parentElement.classList.toggle("active");
       });
     });
   }
 });
 
-  // 現在のページURLを取得して、対応するナビメニューを強調表示
+// ================================
+//   現在ページのナビ強調
+// ================================
 document.addEventListener("DOMContentLoaded", () => {
-  const here = location.pathname.split('/').pop(); // 現在のファイル名（例：videos.html）
-  document.querySelectorAll('.nav-menu a').forEach(a => {
-    if (a.getAttribute('href') === here) {
-      a.classList.add('active');
-    }
+  const here = location.pathname.split("/").pop();
+  document.querySelectorAll(".nav-menu a").forEach((a) => {
+    if (a.getAttribute("href") === here) a.classList.add("active");
   });
 });
 
 // ================================
-//   画像・動画のモーダル表示
-// ================================
+//   モーダル（画像・動画）
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("mediaModal");
   const modalVideo = document.getElementById("modalVideo");
   const modalImg = document.getElementById("modalImg");
   const closeBtn = document.querySelector(".close-btn");
 
-  // 各 player-card のクリックで拡大
-  document.querySelectorAll(".player-card").forEach(card => {
+  const lockBody = () => {
+    document.body.classList.add("modal-open");
+    document.documentElement.classList.add("modal-open");
+  };
+  const unlockBody = () => {
+    document.body.classList.remove("modal-open");
+    document.documentElement.classList.remove("modal-open");
+  };
+
+  document.querySelectorAll(".player-card").forEach((card) => {
     card.addEventListener("click", () => {
       const video = card.querySelector("video");
       const img = card.querySelector("img");
-      
+
       modal.classList.add("active");
-      
+      lockBody();
+
       if (video) {
         modalVideo.src = video.querySelector("source").src;
         modalVideo.style.display = "block";
@@ -75,9 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  //   閉じるボタン または モーダル背景クリックで閉じる
   const closeModal = () => {
     modal.classList.remove("active");
+    unlockBody();
     modalVideo.pause();
     modalVideo.removeAttribute("src");
     modalImg.removeAttribute("src");
@@ -85,65 +91,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   closeBtn.addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal(); // 背景クリックで閉じる
-  });
-
-  //   再クリックでも閉じる
-  modal.addEventListener("click", closeModal);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("mediaModal");
-  const modalVideo = document.getElementById("modalVideo");
-  const modalImg = document.getElementById("modalImg");
-  const closeBtn = document.querySelector(".close-btn");
-
-  // 背景固定する処理
-  const lockBody = () => {
-    document.body.classList.add("modal-open");
-    document.documentElement.classList.add("modal-open");
-  };
-
-  const unlockBody = () => {
-    document.body.classList.remove("modal-open");
-    document.documentElement.classList.remove("modal-open");
-  };
-
-  // モーダル開く
-  document.querySelectorAll(".player-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const video = card.querySelector("video");
-      const img = card.querySelector("img");
-      
-      modal.classList.add("active");
-      lockBody(); // ← 背景完全固定！
-
-      if (video) {
-        modalVideo.src = video.querySelector("source").src;
-        modalVideo.style.display = "block";
-        modalImg.style.display = "none";
-      } else if (img) {
-        modalImg.src = img.src;
-        modalImg.style.display = "block";
-        modalVideo.style.display = "none";
-      }
-    });
-  });
-
-  // モーダル閉じる
-  const closeModal = () => {
-    modal.classList.remove("active");
-    unlockBody(); // ← 背景解除
-    modalVideo.pause();
-    modalVideo.removeAttribute("src");
-    modalImg.removeAttribute("src");
-  };
-
-  closeBtn.addEventListener("click", closeModal);
-  modal.addEventListener("click", e => {
     if (e.target === modal) closeModal();
   });
 });
+
+// ================================
+// 🖱️ ドラッグで横スクロール
+// ================================
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector(".players-grid");
+  if (!slider) return;
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    slider.classList.add("dragging");
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  ["mouseleave", "mouseup"].forEach((event) =>
+    slider.addEventListener(event, () => {
+      isDown = false;
+      slider.classList.remove("dragging");
+    })
+  );
+
+  slider.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.3; // ← スクロール速度調整
+    slider.scrollLeft = scrollLeft - walk;
+  });
+});
+
 
 
 

@@ -950,25 +950,14 @@ header {
   0%   { background-color: rgba(255,255,255,0.15); }
   100% { background-color: transparent; }
 }
-/* ======================================================
-   選手紹介ページ（players.html）
-   シンプル＆整列版
-====================================================== */
-
-/* 全体のベース設定 */
-body {
-  margin: 0;
-  background: #000;
-  color: #fff;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-/* セクション全体 */
+/* ==============================
+   🥊 選手紹介セクション（リセット済）
+============================== */
 .players-section {
   width: 100%;
-  text-align: center;
   padding: 100px 0 60px;
-  overflow-x: visible !important;  /* ← 横は見切らない */
+  text-align: center;
+  overflow: hidden; /* ← h2が巻き込まれない */
 }
 
 .players-section h2 {
@@ -977,36 +966,49 @@ body {
   margin-bottom: 40px;
 }
 
+/* ==============================
+   💫 横スクロールグリッド
+============================== */
 .players-grid {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto !important;     /* ← 横スクロールを強制ON */
+  gap: 20px;
+  overflow-x: auto;          /* ← 横スクロール */
   overflow-y: hidden;
-  width: max-content !important;   /* ← コンテンツ幅に合わせる */
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  padding: 0 40px 20px;
+  margin: 0 auto;
 }
 
 .players-grid::-webkit-scrollbar {
   display: none; /* スクロールバー非表示 */
 }
 
-/* 各カード */
+/* ==============================
+   🎴 各カード
+============================== */
 .player-card {
-  flex: 0 0 260px;
-  background: #111;
+  flex: 0 0 240px;             /* ← 固定幅カード */
   border-radius: 12px;
+  background: #111;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   overflow: hidden;
   scroll-snap-align: start;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.player-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+/* PC：ホバーでズーム＋動き */
+@media (hover: hover) and (pointer: fine) {
+  .player-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.8);
+  }
 }
 
-/* 画像部分 */
+/* ==============================
+   🖼 画像とテキスト
+============================== */
 .player-photo {
   width: 100%;
   height: 300px;
@@ -1014,7 +1016,6 @@ body {
   display: block;
 }
 
-/* テキスト部分（画像の下に表示） */
 .player-info {
   padding: 1em;
   background: #111;
@@ -1023,145 +1024,34 @@ body {
 
 .player-info h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #fff;
 }
 
 .player-info .record {
   margin: 4px 0;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   opacity: 0.9;
 }
 
-.player-info .intro {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  opacity: 0.85;
-}
-
-
-/* ======================================================
-   🥊 UMI Boxing Gym - 横スクロール＋拡大対応版
-====================================================== */
-
-body {
-  margin: 0;
-  background: #000;
-  color: #fff;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-/* ---------- セクション ---------- */
-.players-section {
-  width: 100%;
-  padding: 100px 0 60px;
-  background: #000;
-  color: #fff;
-  text-align: left;
-  overflow: hidden;
-}
-
-.players-section h2 {
-  color: #3b82f6;
-  font-size: 2rem;
-  margin: 0 0 40px 20px;
-  letter-spacing: 0.05em;
-}
-
-/* ---------- 横スクロール ---------- */
-.players-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 20px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 0 20px 40px;
-  transition: transform 0.8s ease;
-}
-
-.players-grid::-webkit-scrollbar {
-  display: none;
-}
-
-/* ---------- カード ---------- */
-.player-card {
-  flex: 0 0 260px;
-  background: #111;
-  border-radius: 12px;
-  overflow: hidden;
-  scroll-snap-align: start;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-}
-
-.player-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.8);
-}
-
-/* ---------- 画像 ---------- */
-.player-photo {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.player-card:hover .player-photo {
-  transform: scale(1.05);
-}
-
-/* ---------- テキスト ---------- */
-.player-info {
-  padding: 1em;
-  background: #111;
-}
-
-.player-info h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.player-info .record {
-  margin: 4px 0;
-  font-size: 0.95rem;
-  color: #ccc;
-}
-
-.player-info .intro {
-  font-size: 0.85rem;
-  color: #aaa;
-  line-height: 1.5;
-}
-
-/* ======================================================
-   🖱️ PC：ホバーで横スクロール演出
-====================================================== */
-@media (hover: hover) and (pointer: fine) {
-  .players-section:hover .players-grid {
-    transform: translateX(-25%);
+/* ==============================
+   📱 スマホ対応
+============================== */
+@media (max-width: 768px) {
+  .player-card {
+    flex: 0 0 200px;
   }
-}
-
-/* ======================================================
-   📱 スマホ：スワイプ対応
-====================================================== */
-@media (hover: none) and (pointer: coarse) {
+  .player-photo {
+    height: 220px;
+  }
   .players-grid {
-    transform: none !important;
-    cursor: grab;
+    padding: 0 20px 20px;
   }
 }
 
-/* ======================================================
-   🎬 モーダル表示（クリック／タップで拡大）
-====================================================== */
+/* ==============================
+   🔍 モーダル
+============================== */
 .modal {
   display: none;
   position: fixed;
@@ -1169,454 +1059,70 @@ body {
   background: rgba(0,0,0,0.9);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 2000;
   padding: 20px;
 }
 
 .modal.active {
   display: flex;
-}
-
-.modal video,
-.modal img {
-  width: 90vw;
-  max-height: 85vh;
-  border-radius: 12px;
-  object-fit: contain;
-}
-
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 2.4rem;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* ======================================================
-   📱 モーダル中：背景固定
-====================================================== */
-body.modal-open {
-  overflow: hidden !important;
-  position: fixed !important;
-  width: 100%;
-  height: 100vh;
-}
-
-
-/* モーダル（クリックで拡大用） */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal.active {
-  display: flex;
-}
-
-.modal video,
-.modal img {
-  width: 90vw;
-  max-height: 90vh;
-  border-radius: 12px;
-  object-fit: contain;
-}
-
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-}
-
-
-/* ======================================================
-   🖼️ モーダル中央配置・スマホ対応
-====================================================== */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;                       /* 画面全体に広げる */
-  background: rgba(0,0,0,0.9);
-  justify-content: center;        /* ← 中央寄せ */
-  align-items: center;            /* ← 中央寄せ */
-  z-index: 2000;                  /* ← 最前面 */
-  padding: 20px;                  /* ← 画面端との余白 */
-  box-sizing: border-box;
-}
-
-.modal.active {
-  display: flex;                  /* ← Flexで中央配置ON！ */
 }
 
 .modal img,
 .modal video {
-  max-width: 90vw;                /* ← 横幅は画面の9割 */
-  max-height: 90vh;               /* ← 縦も画面の9割まで */
-  border-radius: 12px;
-  object-fit: contain;            /* ← 画像や動画の縦横比維持 */
-  display: block;
-  margin: auto;                   /* ← 中央寄せ（念のため） */
-}
-
-.close-btn {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  z-index: 2100; /* ← 画像の上に表示 */
-}
-
-/* ======================================================
-   🎯 モーダル完全中央配置（スマホ・PC両対応）
-====================================================== */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;  /* ← 中央上下揃え */
-  z-index: 3000;
-}
-
-.modal.active {
-  display: flex !important;  /* ← これが超重要！ */
-}
-
-.modal video,
-.modal img {
-  display: block;
   max-width: 90vw;
   max-height: 85vh;
   object-fit: contain;
-  margin: 0 auto;
   border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.8);
-}
-
-/* ✖ボタン */
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  font-size: 2.4rem;
-  color: #fff;
-  cursor: pointer;
-  z-index: 3100;
-}
-
-/* ======================================================
-   🧊 モーダル中は背景スクロール完全ストップ！
-====================================================== */
-body.modal-open {
-  overflow: hidden !important;
-  height: 100vh !important;
-  position: fixed !important;
-  width: 100% !important;
-}
-// ==============================
-// 📱 スマホでモーダル中のスクロール完全ロック
-// ==============================
-(() => {
-  let scrollPos = 0;
-
-  const lockScroll = () => {
-    scrollPos = window.pageYOffset;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollPos}px`;
-    document.body.style.width = '100%';
-  };
-
-  const unlockScroll = () => {
-    document.body.style.position = '';
-    document.body.style.top = '';
-    window.scrollTo(0, scrollPos);
-  };
-
-  const modal = document.getElementById('mediaModal');
-  if (modal) {
-    const observer = new MutationObserver(() => {
-      if (modal.classList.contains('active')) {
-        lockScroll();
-      } else {
-        unlockScroll();
-      }
-    });
-    observer.observe(modal, { attributes: true, attributeFilter: ['class'] });
-  }
-})();
-/* ======================================================
-   📱 モーダル時に全体を完全固定（スマホ対応）
-====================================================== */
-body.modal-open {
-  overflow: hidden !important;
-  position: fixed !important;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  touch-action: none !important; /* ← スワイプ・ピンチ全部無効 */
-}
-
-html.modal-open {
-  overflow: hidden !important;
-  height: 100vh !important;
-}
-/* ======================================================
-   🚀 横スクロール完全復活！
-====================================================== */
-
-.players-section {
-  width: 100vw;                /* ← ビューポート幅で固定 */
-  overflow-x: visible !important;
-  text-align: left !important; /* ← ← ← ここが重要！（中央寄せ解除）*/
-  margin: 0;
-  padding: 100px 0 60px;
-}
-
-.players-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto !important;
-  overflow-y: hidden;
-  width: max-content !important;   /* ← 中身に合わせて広がる */
-  -webkit-overflow-scrolling: touch;
-  padding: 0 20px 40px;
-  scroll-snap-type: x mandatory;
-}
-
-.player-card {
-  flex: 0 0 260px;
-  scroll-snap-align: start;
-}
-/* ======================================================
-   🚀 横スクロール完全復活＋隙間調整
-====================================================== */
-.players-section {
-  width: 100vw;                /* ビューポート幅に合わせる */
-  overflow-x: visible !important;
-  text-align: left !important; /* 中央寄せを解除 */
-  margin: 0;
-  padding: 100px 0 60px;
-}
-
-.players-grid {
-  display: flex !important;
-  flex-wrap: nowrap !important;       /* ← 改行禁止 */
-  gap: 20px !important;               /* ← カードの間隔 */
-  overflow-x: auto !important;        /* ← 横スクロールON */
-  overflow-y: hidden !important;
-  -webkit-overflow-scrolling: touch;  /* ← スマホで滑らか */
-  padding: 0 20px 40px;
-}
-
-.player-card {
-  flex: 0 0 260px;                    /* ← 固定幅（これ重要） */
-  scroll-snap-align: start;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #111;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.players-grid::-webkit-scrollbar {
-  display: none; /* ← スクロールバー非表示 */
-}
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto !important;   /* ← 横スクロール復活！ */
-}
-
-.players-section {
-  overflow-x: visible !important; /* ← 横見切れ防止 */
-}
-
-.players-grid {
-  width: max-content !important;  /* ← 中身分の横幅を確保 */
-  min-width: 100%;
-}
-header, .hero, main {
-  width: 100% !important;     /* ← 100vw を強制的に100%に修正 */
-  max-width: 100% !important;
-  overflow-x: visible !important;
-}
-
-/* ======================================================
-   🥊 UMI Boxing Gym - 横スクロール＋拡大対応版
-====================================================== */
-
-body {
-  margin: 0;
-  background: #000;
-  color: #fff;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-/* ---------- セクション ---------- */
-.players-section {
-  width: 100%;
-  padding: 100px 0 60px;
-  background: #000;
-  color: #fff;
-  text-align: left;
-  overflow: hidden;
-}
-
-.players-section h2 {
-  color: #3b82f6;
-  font-size: 2rem;
-  margin: 0 0 40px 20px;
-  letter-spacing: 0.05em;
-}
-
-/* ---------- 横スクロール ---------- */
-.players-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 20px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 0 20px 40px;
-  transition: transform 2s ease;
-}
-
-.players-grid::-webkit-scrollbar {
-  display: none;
-}
-
-/* ---------- カード ---------- */
-.player-card {
-  flex: 0 0 260px;
-  background: #111;
-  border-radius: 12px;
-  overflow: hidden;
-  scroll-snap-align: start;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-}
-
-.player-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.8);
-}
-
-/* ---------- 画像 ---------- */
-.player-photo {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.player-card:hover .player-photo {
-  transform: scale(1.05);
-}
-
-/* ---------- テキスト ---------- */
-.player-info {
-  padding: 1em;
-  background: #111;
-}
-
-.player-info h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.player-info .record {
-  margin: 4px 0;
-  font-size: 0.95rem;
-  color: #ccc;
-}
-
-.player-info .intro {
-  font-size: 0.85rem;
-  color: #aaa;
-  line-height: 1.5;
-}
-
-/* ======================================================
-   🖱️ PC：ホバーで横スクロール演出
-====================================================== */
-@media (hover: hover) and (pointer: fine) {
-  .players-section:hover .players-grid {
-    transform: translateX(-25%);
-  }
-}
-
-/* ======================================================
-   📱 スマホ：スワイプ対応
-====================================================== */
-@media (hover: none) and (pointer: coarse) {
-  .players-grid {
-    transform: none !important;
-    cursor: grab;
-  }
-}
-
-/* ======================================================
-   🎬 モーダル表示（クリック／タップで拡大）
-====================================================== */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 20px;
-}
-
-.modal.active {
-  display: flex;
-}
-
-.modal video,
-.modal img {
-  width: 90vw;
-  max-height: 85vh;
-  border-radius: 12px;
-  object-fit: contain;
 }
 
 .close-btn {
   position: absolute;
   top: 20px;
   right: 25px;
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: #fff;
   cursor: pointer;
 }
 
-/* ======================================================
-   📱 モーダル中：背景固定
-====================================================== */
+/* モーダル中スクロール禁止 */
 body.modal-open {
-  overflow: hidden !important;
-  position: fixed !important;
+  overflow: hidden;
+  position: fixed;
   width: 100%;
   height: 100vh;
+}
+/* ==============================
+   🧭 横スクロール修正版
+============================== */
+.players-section {
+  overflow: visible !important;   /* ← スクロールを生かす */
+}
+
+.players-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto !important;    /* ← 横スクロールON */
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  width: max-content;             /* ← 中身に合わせて横幅可変 */
+  margin: 0 auto;
+  padding: 0 40px 20px;
+}
+
+.players-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.player-card {
+  flex: 0 0 240px;
+}
+
+.players-grid {
+  cursor: grab;
+  user-select: none; /* ← テキスト選択防止 */
+}
+.players-grid.dragging {
+  cursor: grabbing;
 }
