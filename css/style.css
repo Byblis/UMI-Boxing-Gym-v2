@@ -572,7 +572,7 @@ header {
 .fee-entry h3,
 .fee-section h3 {
   display: inline-block;         /* ← 下線を文字幅に合わせる */
-  border-bottom: 2px solid #fff; /* ← 白い下線 */
+  border-bottom: 2px solid #3a55e0; /* ← 白い下線 */
   padding-bottom: 0.3em;         /* ← 下線との余白 */
   margin-bottom: 0.6em;          /* ← 下のテキストとの間 */
 }
